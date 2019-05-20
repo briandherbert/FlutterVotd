@@ -1,6 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'jsonfetcher.dart';
+import 'story_runner.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: VotdRaw(url: "https://s3.amazonaws.com/yv-stories/votd/story_info.json"),
+      home: StoryRunner(url: "https://s3.amazonaws.com/yv-stories/votd/story_info.json"),
       theme: ThemeData(primaryColor: Colors.white),
     );
   }

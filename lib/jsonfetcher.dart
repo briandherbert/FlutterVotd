@@ -3,6 +3,9 @@ import 'package:flutter_app/model/votd_story.dart';
 import 'network/services.dart';
 
 class JsonDisplayer extends StatefulWidget {
+  VotdStory _story;
+  int _pageIdx = 0;
+
   @override
   JsonDisplayerState createState() => JsonDisplayerState();
 }
@@ -25,6 +28,7 @@ class JsonDisplayerState extends State<StatefulWidget> {
     );
   }
 }
+
 
 class VotdRaw extends StatelessWidget {
   final String url;
