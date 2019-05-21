@@ -8,6 +8,7 @@ import 'network/services.dart';
 class StoryRunner extends StatelessWidget {
   final String url;
   var momentKeywords = {
+    Constants.MOMENT_KEY_INTRO,
     Constants.MOMENT_KEY_PRAYER,
     Constants.MOMENT_KEY_VERSE
   };
@@ -23,6 +24,8 @@ class StoryRunner extends StatelessWidget {
               future: getVotdStory(url),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  Constants.VOTD_STORY = snapshot.data;
+
                   return GestureDetector(
                     child: Text("data ${snapshot.data.title}"),
                     onTap: () => _nextMoment(context),
@@ -39,11 +42,12 @@ class StoryRunner extends StatelessWidget {
     if (_momentIdx >= momentKeywords.length) return;
 
     String keyword = momentKeywords.elementAt(_momentIdx);
+    Moment moment = Constants.VOTD_STORY.moments.elementAt(_momentIdx);
     Navigator.of(context).push(
       MaterialPageRoute<void>(builder: (BuildContext context) {
         return GestureDetector(
           child: WillPopScope(
-            child: MomentHolder(keyword: keyword),
+            child: MomentHolder(moment: moment),
             onWillPop: _willPopCallback,
           ),
           onTap: () => _nextMoment(context),
@@ -61,16 +65,16 @@ class StoryRunner extends StatelessWidget {
 }
 
 class MomentHolder extends StatelessWidget {
-  final String keyword;
+  final Moment moment;
 
-  MomentHolder({Key key, @required this.keyword}) : super();
+  MomentHolder({Key key, @required this.moment}) : super();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: generateWidget(keyword)));
+    return generateWidget(moment);
   }
 
-  Widget generateWidget(String keyword) {
-    return MomentWidget(keyword: keyword);
+  Widget generateWidget(Moment moment) {
+    return MomentWidget(moment: moment,);
   }
 }

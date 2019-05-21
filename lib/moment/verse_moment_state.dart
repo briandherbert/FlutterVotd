@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'moment_widget.dart';
 
-class VerseMomentState extends State<MomentWidget> {
+class VerseMomentState extends MomentState {
   @override
-  Widget build(BuildContext context) {
-    return Text("VMS");
+  String getName() {
+    return "Bible";
+  }
+
+  @override
+  Widget getContent() {
+    return Container();
   }
 }
