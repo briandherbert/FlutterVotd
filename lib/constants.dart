@@ -1,4 +1,6 @@
 import 'package:flutter_app/model/votd_story.dart';
+import 'package:flutter_app/ui/utils.dart';
+import 'package:flutter/material.dart';
 
 class Constants {
   static const String BASE_URL = "https://s3.amazonaws.com/yv-stories/votd/";
@@ -15,5 +17,13 @@ class Constants {
 
   static getImageUrl(String filename) {
     return BASE_URL + filename;
+  }
+
+  static Color bgColorLight() {
+    return Utils.colorFrom(VOTD_STORY.theme.bgLight);
+  }
+
+  static Color bgColorDark() {
+    return Utils.colorFrom(VOTD_STORY.theme.bgDark);
   }
 }

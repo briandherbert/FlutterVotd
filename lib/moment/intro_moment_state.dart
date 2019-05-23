@@ -22,33 +22,35 @@ class IntroMomentState extends MomentState {
                   image: new NetworkImage(
                       Constants.getImageUrl(widget.moment.content.image)),
                   //image: AssetImage("assets/images/blurred_bg.png"),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.fill,
                   alignment: Alignment.topCenter,
                 ),
               ),
             ),
             //Image.asset("assets/images/blurred_bg.png", fit: BoxFit.fill)
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     "Good Morning",
                     style: TextStyle(
                       fontSize: 26.0,
-                      color: Colors.red,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     widget.moment.content.text,
                     style: TextStyle(
                       fontSize: 18.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
+
                     ),
                   ),
                 ),
