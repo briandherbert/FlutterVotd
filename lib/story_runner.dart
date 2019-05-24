@@ -45,13 +45,16 @@ class StoryRunner extends StatelessWidget {
                       children: <Widget>[
                         Utils.getGradient(Constants.VOTD_STORY.theme.bgDark,
                             Constants.VOTD_STORY.theme.bgLight),
-                        PageView(
-                          children: _createPages(snapshot.data.moments),
-                          controller: controller,
-                          onPageChanged: (index) {
-                            // TODO: How to propagate this?
-                            print("page changed to ${controller.page}");
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(top: 48),
+                          child: PageView(
+                            children: _createPages(snapshot.data.moments),
+                            controller: controller,
+                            onPageChanged: (index) {
+                              // TODO: How to propagate this?
+                              print("page changed to ${controller.page}");
+                            },
+                          ),
                         ),
 
                         Padding(
