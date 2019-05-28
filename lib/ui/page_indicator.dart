@@ -17,6 +17,7 @@ class PageIndicatorState extends State<PageIndicator> {
 
   @override
   void initState() {
+    print("init page indicator");
     widget.controller.addListener(() {
       print(
           "controller listener in page indicator, page is ${widget.controller.page}");

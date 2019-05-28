@@ -17,4 +17,8 @@ class Utils {
     if (hex.length == 6) hex = "FF" + hex;
     return Color(int.parse("0x$hex"));
   }
+
+  static void dismissKeyboard(BuildContext context) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+  }
 }

@@ -51,8 +51,7 @@ class StoryRunner extends StatelessWidget {
                             children: _createPages(snapshot.data.moments),
                             controller: controller,
                             onPageChanged: (index) {
-                              // TODO: How to propagate this?
-                              print("page changed to ${controller.page}");
+                              // TODO: How to propagate this? Returns double
                             },
                           ),
                         ),
