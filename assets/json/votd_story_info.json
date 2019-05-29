@@ -1,0 +1,102 @@
+{
+  "title": "Verse of the Day",
+  "theme": {
+    "bgLight": "dde8ef",
+    "bgDark": "71b4c4",
+    "textLight": "ffffff",
+    "textDark": "495949"
+  },
+  "moments": [
+    {
+      "id": 0,
+      "type": "intro",
+      "title": "Verse of the Day",
+      "content": {
+        "text": "Take a moment to prepare your mind and heart to hear from God's Word.",
+        "image": "assets/intro_bg.png"
+      }
+
+    },
+    {
+      "id": 1,
+      "type": "image",
+      "title": "Verse of the Day",
+      "content": {
+        "image": "assets/votd_image.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "type": "devotional",
+      "title": "Plan",
+      "content": {
+        "title": "Finding Peace (Day 5)",
+        "author": "Charles F. Stanley",
+        "subtitle": "Philippians 4:7",
+        "text": "When you guard your mind, you guard your peace.  When you offer prayers to God with faith and thanksgiving - no matter what trials you face - He assures you inner peace. And when you focus your thinking on what's true, noble, virtuous, lovely, pure, and praiseworthy, you rely upon God with increasing faith and trust.",
+        "image": "assets/devo_hero.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "title": "Verse of the Day",
+      "content": {
+        "title": "PHILIPPIANS 4:7",
+        "subtitle": "Pastor Craig Groeschel",
+        "url": "assets/phil4_craig.mp4",
+        "image":"assets/phil4_craig_thumb.jpg",
+        "videoLengthSeconds": 59.0
+      }
+    },
+    {
+      "id": 4,
+      "type": "reflection",
+      "title": "Reflection",
+      "content": {
+        "prompt": "Does anything from today's verse stand out to you?"
+      }
+    },
+    {
+      "id": 5,
+      "type": "bible",
+      "title": "Meditation",
+      "content": {
+        "references": [
+          {
+            "text": "Then you will experience God's peace, which exceeds anything we can understand.  His peace will guard your hearts and minds as you live in Christ Jesus.",
+            "ref": "Philippians 4:7 (NLT)"
+          },
+          {
+            "text": "And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.",
+            "ref": "Philippians 4:7 (ESV)"
+          },
+          {
+            "text": "And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+            "ref": "Philippians 4:7 (NIV)"
+          },
+          {
+            "text": "then God's wonderful peace that transcends human understanding, will make the answers known to you through Jesus Christ.",
+            "ref": "Philippians 4:7 (TPT)"
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "type": "prayer",
+      "title": "Prayer",
+      "content": {
+        "prompt": "Take a moment to pray over this verse."
+      }
+    }
+  ],
+  "resources": [
+    {
+      "image": "assets/votd_image.png"
+    },
+    {
+      "image": "assets/devo_hero.jpg"
+    }
+  ]
+}

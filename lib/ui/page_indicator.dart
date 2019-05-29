@@ -15,12 +15,31 @@ class PageIndicator extends StatefulWidget {
 class PageIndicatorState extends State<PageIndicator> {
   int _page = 0;
 
+  void controllerListener() {
+    if (_page != widget.controller.page && widget.controller.page % 1.0 == 0) {
+      setState(() {
+        _page = widget.controller.page.floor();
+      });
+    }
+  }
+
   @override
   void initState() {
     print("init page indicator");
+    widget.controller.addListener(controllerListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(controllerListener);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     widget.controller.addListener(() {
-      print(
-          "controller listener in page indicator, page is ${widget.controller.page}");
+      //print("controller listener in page indicator, page is ${widget.controller.page}");
       if (_page != widget.controller.page &&
           widget.controller.page % 1.0 == 0) {
         setState(() {
@@ -28,12 +47,6 @@ class PageIndicatorState extends State<PageIndicator> {
         });
       }
     });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    print("num pages $num");
 
     var indicators = List<Widget>();
     for (int i = 0; i < widget.count; i++) {

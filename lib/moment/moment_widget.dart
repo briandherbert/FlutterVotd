@@ -9,6 +9,7 @@ import 'package:flutter_app/moment/prayer_moment_state.dart';
 import 'package:flutter_app/moment/verse_moment_state.dart';
 import 'package:flutter_app/moment/devo_moment_state.dart';
 import 'package:flutter_app/moment/reflect_moment_state.dart';
+import 'package:flutter_app/moment/video_moment_state.dart';
 import 'package:flutter_app/ui/utils.dart';
 
 export 'package:flutter_app/constants.dart';
@@ -52,6 +53,11 @@ class MomentWidget extends StatefulWidget {
       case Constants.MOMENT_KEY_REFLECTION:
         {
           return ReflectMomentState();
+        }
+
+      case Constants.MOMENT_KEY_VIDEO:
+        {
+          return VideoMomentState();
         }
     }
   }

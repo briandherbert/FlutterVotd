@@ -51,10 +51,10 @@ class ReflectMomentState extends MomentState {
                     child: TextField(
                       // Text input
                       controller: formController,
-                      autofocus: true,
+                      //autofocus: true,
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Write your response here.'),
+                          hintText: 'Write your response here1.'),
                       onEditingComplete: () {
                         Utils.dismissKeyboard(context);
                       },

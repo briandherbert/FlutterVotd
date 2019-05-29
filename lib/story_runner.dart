@@ -55,7 +55,6 @@ class StoryRunner extends StatelessWidget {
                             },
                           ),
                         ),
-
                         Padding(
                           padding: const EdgeInsets.only(top: 40),
                           child: PageIndicator(
@@ -97,9 +96,11 @@ class StoryRunner extends StatelessWidget {
       MaterialPageRoute<void>(builder: (BuildContext context) {
         return GestureDetector(
           child: WillPopScope(
-            child: MomentHolder(moment: moment),
-            onWillPop: _willPopCallback,
-          ),
+              child: MomentHolder(moment: moment),
+              onWillPop: () async {
+                _momentIdx--;
+                return true;
+              }),
           onTap: () => _nextMoment(context),
         );
       }),
@@ -116,11 +117,6 @@ class StoryRunner extends StatelessWidget {
     }
 
     return momentWidgets;
-  }
-
-  Future<bool> _willPopCallback() async {
-    _momentIdx--;
-    return true;
   }
 }
 

@@ -12,6 +12,7 @@ class Constants {
   static const String MOMENT_KEY_IMAGE = "image";
   static const String MOMENT_KEY_DEVO = "devotional";
   static const String MOMENT_KEY_REFLECTION = "reflection";
+  static const String MOMENT_KEY_VIDEO = "video";
 
   static VotdStory VOTD_STORY;
 

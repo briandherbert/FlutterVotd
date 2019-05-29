@@ -76,6 +76,10 @@ class Content {
   String author;
   String subtitle;
   String prompt;
+  String url;
+  double startTimeOffsetSeconds;
+  double endTimeOffsetSeconds;
+  double videoLengthSeconds;
   List<Reference> references;
 
   Content({
@@ -85,6 +89,10 @@ class Content {
     this.author,
     this.subtitle,
     this.prompt,
+    this.url,
+    this.startTimeOffsetSeconds,
+    this.endTimeOffsetSeconds,
+    this.videoLengthSeconds,
     this.references,
   });
 
@@ -95,6 +103,10 @@ class Content {
         author: json["author"] == null ? null : json["author"],
         subtitle: json["subtitle"] == null ? null : json["subtitle"],
         prompt: json["prompt"] == null ? null : json["prompt"],
+        url: json["url"] == null ? null : json["url"],
+        startTimeOffsetSeconds: json["startTimeOffsetSeconds"] == null ? null : json["startTimeOffsetSeconds"],
+        endTimeOffsetSeconds: json["endTimeOffsetSeconds"] == null ? null : json["endTimeOffsetSeconds"],
+        videoLengthSeconds: json["videoLengthSeconds"] == null ? null : json["videoLengthSeconds"],
         references: json["references"] == null
             ? null
             : new List<Reference>.from(
@@ -108,6 +120,10 @@ class Content {
         "author": author == null ? null : author,
         "subtitle": subtitle == null ? null : subtitle,
         "prompt": prompt == null ? null : prompt,
+        "url": url == null ? null : url,
+        "startTimeOffsetSeconds": startTimeOffsetSeconds == null ? null : startTimeOffsetSeconds,
+        "endTimeOffsetSeconds": endTimeOffsetSeconds == null ? null : endTimeOffsetSeconds,
+        "videoLengthSeconds": videoLengthSeconds == null ? null : videoLengthSeconds,
         "references": references == null
             ? null
             : new List<dynamic>.from(references.map((x) => x.toJson())),
