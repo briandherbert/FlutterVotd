@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
 
+/// Based on https://flutter.dev/docs/cookbook/plugins/play-video
 class VideoPlayerScreen extends StatefulWidget {
   final String url;
   VideoPlayerScreen({Key key, @required String this.url}) : super(key: key);
@@ -43,6 +44,8 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+
       backgroundColor: Colors.black,
       // Use a FutureBuilder to display a loading spinner while you wait for the
       // VideoPlayerController to finish initializing.
@@ -53,10 +56,20 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
             // If the VideoPlayerController has finished initialization, use
             // the data it provides to limit the Aspect Ratio of the Video
             return Center(
-              child: AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                // Use the VideoPlayer widget to display the video
-                child: VideoPlayer(_controller),
+              child: GestureDetector(
+                child: AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  // Use the VideoPlayer widget to display the video
+                  child: VideoPlayer(_controller),
+                ),
+
+                onTap:  () {
+                  // Wrap the play or pause in a call to `setState`. This ensures the
+                  // correct icon is shown
+                  setState(() {
+                    playOrPause();
+                  });
+                },
               ),
             );
           } else {
@@ -68,27 +81,31 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       ),
       floatingActionButton: Center(
         child: FloatingActionButton(
-          backgroundColor: Colors.black,
+          elevation: 0,
+          backgroundColor: _controller.value.isPlaying ?  Colors.transparent : Colors.black54,
 
           onPressed: () {
             // Wrap the play or pause in a call to `setState`. This ensures the
             // correct icon is shown
             setState(() {
-              // If the video is playing, pause it.
-              if (_controller.value.isPlaying) {
-                _controller.pause();
-              } else {
-                // If the video is paused, play it
-                _controller.play();
-              }
+              playOrPause();
             });
           },
           // Display the correct icon depending on the state of the player.
           child: Icon(
-            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+            _controller.value.isPlaying ? null : Icons.play_arrow,
           ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void playOrPause() {
+    if (_controller.value.isPlaying) {
+      _controller.pause();
+    } else {
+      // If the video is paused, play it
+      _controller.play();
+    }
   }
 }

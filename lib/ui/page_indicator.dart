@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PageIndicator extends StatefulWidget {
   final PageController controller;
   final int count;
-  static final double HEIGHT = 4;
+  static final double HEIGHT = 3;
 
   PageIndicator({Key key, @required this.controller, @required this.count})
       : super();
@@ -22,17 +22,21 @@ class PageIndicatorState extends State<PageIndicator> {
       });
     }
   }
+  
+  VoidCallback _callback;
 
   @override
   void initState() {
-    print("init page indicator");
-    widget.controller.addListener(controllerListener);
+    _callback = controllerListener;
+
+    print("init page indicator, listener ");
+    widget.controller.addListener(_callback);
     super.initState();
   }
 
   @override
   void dispose() {
-    widget.controller.removeListener(controllerListener);
+    widget.controller.removeListener(_callback);
     super.dispose();
   }
 
@@ -40,10 +44,10 @@ class PageIndicatorState extends State<PageIndicator> {
   Widget build(BuildContext context) {
     widget.controller.addListener(() {
       //print("controller listener in page indicator, page is ${widget.controller.page}");
-      if (_page != widget.controller.page &&
-          widget.controller.page % 1.0 == 0) {
+      int newPage = (widget.controller.page + .5).floor();
+      if (_page != newPage) {
         setState(() {
-          _page = widget.controller.page.floor();
+          _page = newPage;
         });
       }
     });

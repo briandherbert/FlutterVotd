@@ -22,8 +22,6 @@ class StoryRunner extends StatelessWidget {
 
   StoryRunner({Key key, @required this.url}) : super(key: key);
 
-  PageIndicator pageIndicator;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +33,6 @@ class StoryRunner extends StatelessWidget {
 
                 if (usePager) {
                   print("using pager $usePager");
-
                   if (!snapshot.hasData) {
                     return new Text("Fetching data...");
                   }
@@ -43,17 +40,13 @@ class StoryRunner extends StatelessWidget {
                   return Scaffold(
                     body: new Stack(
                       children: <Widget>[
-                        Utils.getGradient(Constants.VOTD_STORY.theme.bgDark,
-                            Constants.VOTD_STORY.theme.bgLight),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 48),
-                          child: PageView(
-                            children: _createPages(snapshot.data.moments),
-                            controller: controller,
-                            onPageChanged: (index) {
-                              // TODO: How to propagate this? Returns double
-                            },
-                          ),
+                        PageView(
+                          children: _createPages(snapshot.data.moments),
+                          controller: controller,
+                          onPageChanged: (index) {
+                            // TODO: How to propagate this? Returns double
+                            // Solved - pass the controller to children
+                          },
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 40),
@@ -64,7 +57,7 @@ class StoryRunner extends StatelessWidget {
                       ],
                     ),
                   );
-                } else if (snapshot.hasData) {
+                } else if (snapshot.hasData) {  // Old approach, uses route queue like Activities
                   return Dismissible(
                     resizeDuration: null,
                     onDismissed: (DismissDirection direction) {
@@ -96,7 +89,7 @@ class StoryRunner extends StatelessWidget {
       MaterialPageRoute<void>(builder: (BuildContext context) {
         return GestureDetector(
           child: WillPopScope(
-              child: MomentHolder(moment: moment),
+              child: MomentWidget(moment: moment),
               onWillPop: () async {
                 _momentIdx--;
                 return true;
@@ -111,28 +104,11 @@ class StoryRunner extends StatelessWidget {
 
   /// Each page is a widget in a pager
   List<Widget> _createPages(List<Moment> moments) {
-    List<Widget> momentWidgets = new List<MomentHolder>();
+    List<Widget> momentWidgets = new List<MomentWidget>();
     for (Moment moment in moments) {
-      momentWidgets.add(new MomentHolder(moment: moment));
+      momentWidgets.add(new MomentWidget(moment: moment, pageController: controller));
     }
 
     return momentWidgets;
-  }
-}
-
-class MomentHolder extends StatelessWidget {
-  final Moment moment;
-
-  MomentHolder({Key key, @required this.moment}) : super();
-
-  @override
-  Widget build(BuildContext context) {
-    return generateWidget(moment);
-  }
-
-  Widget generateWidget(Moment moment) {
-    return MomentWidget(
-      moment: moment,
-    );
   }
 }

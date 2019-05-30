@@ -16,8 +16,9 @@ export 'package:flutter_app/constants.dart';
 
 class MomentWidget extends StatefulWidget {
   final Moment moment;
+  PageController pageController;
 
-  MomentWidget({Key key, @required this.moment}) : super();
+  MomentWidget({Key key, @required this.moment, this.pageController}) : super();
 
   @override
   MomentState createState() {
@@ -71,7 +72,11 @@ abstract class MomentState extends State<MomentWidget> {
         body: new Stack(
           children: <Widget>[
             getBg(),
-            getContent(),
+            Padding(
+              padding: EdgeInsets.only(top: getTopPadding()),
+              child: getContent(),
+            ),
+            getHeader()
           ],
         ));
   }
@@ -79,6 +84,19 @@ abstract class MomentState extends State<MomentWidget> {
   Widget getBg() {
     return Utils.getGradient(Constants.VOTD_STORY.theme.bgDark,
         Constants.VOTD_STORY.theme.bgLight);
+  }
+
+  double getTopPadding() {
+    return 48.0;
+  }
+
+  Widget getHeader() {
+    return new Row(
+        children: <Widget>[
+          Icon(Icons.close, color: Colors.white,),
+          Icon(Icons.share, color: Colors.white,),
+          ]
+    );
   }
 
   Widget _getAppBar() {
@@ -97,35 +115,6 @@ abstract class MomentState extends State<MomentWidget> {
     return AppBar(
       title: Text(getName()),
     );
-  }
-
-  Widget _getPageIndicator(int selectedIdx) {
-    print("get page at idx " + selectedIdx.toString());
-    int numMoments = Constants.VOTD_STORY.moments.length;
-
-    var moments = List<Widget>();
-    for (int i = 0; i < numMoments; i++) {
-      moments.add(new Expanded(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
-          child: Container(
-            color: _getPageSelectorColor(i <= selectedIdx),
-            height: 4,
-          ),
-        ),
-      ));
-    }
-
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-      ]..addAll(moments),
-    );
-  }
-
-  _getPageSelectorColor(bool selected) {
-    if (selected) return Colors.white;
-    return Colors.white12;
   }
 
   Widget getContent();

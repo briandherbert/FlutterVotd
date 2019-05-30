@@ -54,7 +54,7 @@ class ReflectMomentState extends MomentState {
                       //autofocus: true,
                       decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Write your response here1.'),
+                          hintText: 'Write your response here.'),
                       onEditingComplete: () {
                         Utils.dismissKeyboard(context);
                       },

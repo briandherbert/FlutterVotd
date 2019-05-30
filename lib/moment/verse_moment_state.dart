@@ -32,7 +32,7 @@ class VerseMomentState extends MomentState {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     text,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                 ),
               ),
