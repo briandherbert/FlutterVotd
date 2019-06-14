@@ -1,0 +1,91 @@
+{
+  "title": "Healing",
+  "theme": {
+    "primaryColor": "362c2a",
+    "uiColor": "988b88",
+    "accentColor" : "d59d8f",
+    "backgroundColor": "efe9df"
+  },
+  "moments": [
+    {
+      "id": 0,
+      "type": "intro",
+      "title": "Healing",
+      "content": {
+        "text": "Take a moment to prepare your mind and heart to hear from God's Word.",
+        "image": "assets/intro_bg_tall.png"
+      }
+    },
+    {
+      "id": 1,
+      "type": "bible",
+      "title": "BIBLE",
+      "content": {
+        "references": [
+          {
+            "text": "Heal me, LORD and I will be healed; save me and I will be saved, for you are the one I praise",
+            "ref": "Jeremiah 17:14 NIV"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "devotional",
+      "title": "BIBLE PLAN",
+      "content": {
+        "title": "Key 1: Give Your Heart to Christ",
+        "plantitle": "Seven Keys To Emotional Wholeness",
+        "author": "Charles F. Stanley",
+        "subtitle": "Romans 8:1",
+        "text": "Spiritual redemption is the first key toward developing a positive self-image. People who don't know Christ may claim they think the world of themselves, but they won't draw that conclusion if they're honest. Most unbelievers who state they're self-sufficient and don't need Christ are miserable people in crises. They're like beautiful flowering weeds with no strong root system. They only have themselves to rely on for strength, energy, enthusiasm, and creativity. Eventually, they get to the end of themselves. They don't have the Holy Spirit in them to build them up in Christ in a way that's comforting and based on truth, even in times of chastisement.",
+        "image": "assets/devo_hero.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "type": "bible",
+      "title": "BIBLE",
+      "content": {
+        "references": [
+          {
+            "text": "And my God will meet all your needs according to the riches of his glory in Christ Jesus",
+            "ref": "Phillipians 4:19 NIV"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "type": "video",
+      "title": "MESSAGES",
+      "content": {
+        "title": "Be in the Word",
+        "subtitle": "A Personal Trainer",
+        "url": "assets/placeholder.m4v",
+        "startTimeOffsetSeconds": 0.0,
+        "endTimeOffsetSeconds": 124.99,
+        "videoLengthSeconds": 124.99
+      }
+    },
+    {
+      "id": 5,
+      "type": "worship",
+      "title": "WORSHIP",
+      "content": {
+        "title": "Miracles",
+        "subtitle": "Jesus Culture",
+        "url": "",
+        "image": ""
+      }
+    },
+    {
+      "id": 6,
+      "type": "image",
+      "title": "VERSE IMAGE",
+      "content": {
+        "image": "assets/votd_image.png"
+      }
+    }
+  ]
+}

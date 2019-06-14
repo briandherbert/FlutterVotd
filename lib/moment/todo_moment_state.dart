@@ -4,24 +4,13 @@ import 'moment_widget.dart';
 import 'package:flutter_app/ui/video_player.dart';
 import 'package:flutter_app/constants.dart';
 
-class VideoMomentState extends MomentState {
+class TodoMomentState extends MomentState {
   final formController = TextEditingController();
 
   @override
   String getName() {
-    return "Video";
+    return "TODO";
   }
-
-  @override
-  double getTopPadding() {
-    return 0.0;
-  }
-
-  @override
-  Widget getBg() {
-    return Container(color: Colors.black,);
-  }
-
 
   @override
   Widget getContent() {
@@ -31,7 +20,7 @@ class VideoMomentState extends MomentState {
 
     return Center(
         // Fortunately, this diplays a thumbnail
-        child: VideoPlayerScreen(url: Constants.getImageUrl(widget.moment.content.url))
+        child: Text("Need to implement type " + widget.moment.type)
         //Image.network(Constants.getImageUrl(widget.moment.content.image), fit: BoxFit.fill));
     );
   }

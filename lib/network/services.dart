@@ -1,9 +1,59 @@
-import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'package:flutter_app/model/votd_story.dart';
 import 'dart:convert';
 
-Future<VotdStory> getVotdStory(String url) async {
-  final response = await http.get(url);
-  return VotdStory.fromJson(json.decode(response.body));
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_app/model/stories_info.dart';
+import 'package:flutter_app/model/yv_story.dart';
+import 'package:http/http.dart' as http;
+
+Future<YvStory> getYvStory(String url) async {
+  bool fromFile = false;
+  print("get story, from file? " + fromFile.toString() + " url " + url);
+
+  var decoded;
+  String jsonStr;
+  try {
+    if (fromFile) {
+      jsonStr = await rootBundle.loadString("assets/json/votd.json");
+      print("jsonstr " + jsonStr);
+    } else {
+      jsonStr = (await http.get(url)).body;
+    }
+
+    decoded = json.decode(jsonStr);
+  } catch (e) {
+    print("error: $e");
+  }
+
+  YvStory story;
+  try {
+    story = YvStory.fromJson(decoded);
+  } catch (e) {
+    print("error converting from json " + e.toString());
+  }
+
+  return story;
+}
+
+Future<StoriesInfo> getStories(String url) async {
+  bool fromFile = false;
+  print("get stories, from file? " + fromFile.toString() + " \nurl " + url);
+
+  var decoded;
+  String jsonStr;
+  try {
+    jsonStr = (await http.get(url)).body;
+    decoded = json.decode(jsonStr);
+  } catch (e) {
+    print("error: $e");
+  }
+
+  StoriesInfo stories;
+  try {
+    stories = StoriesInfo.fromJson(decoded);
+  } catch (e) {
+    print("error converting from json " + e.toString());
+  }
+
+  return stories;
 }

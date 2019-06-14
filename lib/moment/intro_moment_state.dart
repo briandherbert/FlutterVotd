@@ -24,7 +24,7 @@ class IntroMomentState extends MomentState {
                     Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: new NetworkImage(Constants.getImageUrl(
+                          image: NetworkImage(Constants.getImageUrl(
                               widget.moment.content.image)),
                           fit: BoxFit.fill,
                           alignment: Alignment.topCenter,

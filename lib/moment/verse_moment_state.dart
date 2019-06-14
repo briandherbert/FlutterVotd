@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/votd_story.dart';
+//import 'package:flutter_app/model/votd_story.dart';
+import 'package:flutter_app/model/yv_story.dart';
 
 import 'moment_widget.dart';
 
 class VerseMomentState extends MomentState {
+  bool isCheckedMeditate = false;
+
   @override
   String getName() {
     return "Bible";
@@ -39,7 +42,25 @@ class VerseMomentState extends MomentState {
             ),
           )),
         ),
-        Text("I want to meditate on this scripture later today")
+        Padding(
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 20),
+          child: Row(
+            children: <Widget>[
+              Checkbox(
+                value: isCheckedMeditate,
+                onChanged: (bool value) {
+                  setState(() {
+                    isCheckedMeditate = !isCheckedMeditate;
+                  });
+                },
+              ),
+              Flexible(
+                child: Text("I want to meditate on this scripture later today",
+                style: TextStyle(fontSize: 20),),
+              ),
+            ],
+          ),
+        )
       ],
     );
   }

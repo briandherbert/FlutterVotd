@@ -1,0 +1,152 @@
+{
+  "title": "Personalized",
+  "theme": {
+    "primaryColor": "554a45",
+    "uiColor": "988b88",
+    "accentColor" : "C18C66",
+    "backgroundColor": "F5EFE8"
+  },
+  "moments": [
+    {
+      "id": 0,
+      "type": "intro",
+      "title": "",
+      "content": {
+        "titleImage": "assets/sun.png",
+        "text": "Take a moment to prepare your mind and heart to hear from God's Word.",
+        "image": "assets/desert_image.png"
+      }
+    },
+    {
+      "id": 1,
+      "type": "bible",
+      "title": "BIBLE",
+      "content": {
+        "references": [
+          {
+            "text": "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid",
+            "ref": "John 14:27"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "reflection",
+      "title": "REFLECTION",
+      "content": {
+        "prompt": "Can you identify anything specific that is robbing your peace today?",
+        "subject": "Worries that I am lifting up in prayer",
+        "quickOptions": [
+          "A tense or broken relationship",
+          "Stress at work",
+          "Financial struggles",
+          "Season of life change",
+          "Chronic illness or injury"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "title": "MESSAGES",
+      "content": {
+        "title": "Mastermind - Part 4",
+        "subtitle": "Pastor Craig Groeschel",
+        "url": "assets/mastermind4_portrait.mp4",
+        "image":"assets/mastermind4_portrait_thumb.jpg",
+        "startTimeOffsetSeconds": 1443.0,
+        "endTimeOffsetSeconds": 1560.0,
+        "videoLengthSeconds": 2219.92
+      }
+    },
+    {
+      "id": 4,
+      "type": "devotional",
+      "title": "BIBLE PLAN",
+      "content": {
+        "title": "DEVOTIONAL",
+        "plantitle": "Wiping Out Worry (Day 4)",
+        "author": "Tony Evans",
+        "subtitle": "Matthew 6:25-26",
+        "text": "Jesus said, \"For this reason I say to you, do not be worried about your life, as to what you will eat or what you will drink nor for your body, as to what you will put on. Is not life more than food, and the body more than clothin? Look at the birds of the air, that they do not sow, nor reap nor gather into barns, and yet your heavenly Father feeds them.  Are you not worth much more than they?\" (Matthew 6:25-26)\n\nThe reason we worry is that we are focusing on the wrong authority. If our Father feeds birds that have no soul, how much more will He take care of us since we are worth even more to Him? Remember His promise that He will never leave you nor forsake you as the first antidote to worry.",
+        "image": "assets/dev_hero.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "type": "bible",
+      "title": "BIBLE",
+      "content": {
+        "references": [
+          {
+            "text": "Cast all your anxiety on him because he cares for you.",
+            "ref": "1 Peter 5:7"
+          }
+        ],
+        "audioResource": {
+          "image": "assets/it_is_well_image.png",
+          "audioUrl": "assets/it_is_well.mp3",
+          "title": "It Is Well",
+          "author": "Kristene DiMarco"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "memory",
+      "title": "MEMORY",
+      "content": {
+        "title": "Reflect on this prayer that was answered a year ago today:",
+        "memories": [
+          {
+            "title": "Georges Embolo",
+            "date": "4/24/2018",
+            "text": "I am tempted to worry about so many things. Our world is a mess! Forgive me for focusing on anything or anyone but You.  Thank You for the Bible that equips and empowers me to live each day. Right now, I declare that You are my ony Hope. Please help me remember that.",
+            "avatar": "assets/avatar.png"
+          },
+          {
+            "title": "You marked this prayer as Answered",
+            "date": "5/15/2018",
+            "text": " √ Over the past few weeks, God's restored my thought processes and given me a renewed hope.  I'm worrying so much less. Thanks for you prayers."
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "type": "guided_prayer",
+      "title": "",
+      "content": {
+        "title": "TODAY'S PRAYER",
+        "text": "I know Satan wants to use my fears to hold me back from living boldy for You. Forgive me for not living in faith, and help me fromthis moment on to live with bold confidence in You. Lord, help me not compare myself toothers around me. I pray instead that I can keep my eye on You and live a life that proclaims Your excellence."
+      }
+    },
+    {
+      "id": 8,
+      "type": "person_prayer",
+      "title": "",
+      "content": {
+        "title": "Roelof Bekkeninks",
+        "image": "assets/avatar.png",
+        "text": "God, sometimes life gets me down and I... find it hard to see things to be thankful for. Open my eyes to see the gifts you've given me in my life. I'm going to start by thanking you for loving me enough to come to earth and die so we can live together forever.",
+        "commentDate": "4/24/2019",
+        "commentorsAvatarImage": "assets/friendavatars2.png",
+        "meAvatar": "assets/andy_avatar.png"
+      }
+    },
+    {
+      "id": 9,
+      "type": "person_prayer",
+      "title": "",
+      "content": {
+        "title": "Georges Emebolo",
+        "image": "assets/george_avatar.png",
+        "text": "Help me live as the one you uniquely... intended me to be. Help me abide instead of strive, living peacefully and joyfully as heirs to Your Kingdom and co-heirs with Christ.",
+        "commentDate": "4/24/2019",
+        "commentorsAvatarImage": "assets/friendavatars1.png",
+        "meAvatar": "assets/andy_avatar.png"
+      }
+    }
+  ]
+}

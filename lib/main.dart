@@ -1,7 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'jsonfetcher.dart';
 import 'story_runner.dart';
+import 'stories_list.dart';
 import 'package:flutter_app/constants.dart';
 
 void main() => runApp(MyApp());
@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: StoryRunner(url: Constants.JSON_URL),
+      //home: StoryRunner(url: Constants.JSON_URL),
+      home: StoriesList(),
       theme: ThemeData(primaryColor: Colors.white),
     );
   }

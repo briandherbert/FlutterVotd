@@ -8,7 +8,7 @@ class ReflectMomentState extends MomentState {
 
   @override
   String getName() {
-    return "Reflect";
+    return "Reflection";
   }
 
   @override

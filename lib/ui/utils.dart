@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 class Utils {
   static Container getGradient(String startHex, String endHex) {
+    if (startHex == null) startHex = "FF00FF";
+    if (endHex == null) {
+      endHex = startHex;
+    }
+
     return new Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -14,6 +19,7 @@ class Utils {
   }
 
   static Color colorFrom(String hex) {
+    if (hex == null) return Colors.red;
     if (hex.length == 6) hex = "FF" + hex;
     return Color(int.parse("0x$hex"));
   }

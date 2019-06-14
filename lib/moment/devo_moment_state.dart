@@ -10,57 +10,60 @@ class DevoMomentState extends MomentState {
 
   @override
   Widget getContent() {
+    print("img " + Constants.getImageUrl(widget.moment.content.image));
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(children: <Widget>[
-          new Card(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            color: Colors.white,
-            child: new Stack(children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        "DEVOTIONAL",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 2,
-                            fontSize: 20),
-                      ),
-                      Text(
-                        widget.moment.content.author,
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            color: Colors.black26),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Text(
-                          "⎻⎻⎻⎻⎻⎻⎻⎻ " + widget.moment.content.subtitle + "  ⎻⎻⎻⎻⎻⎻⎻⎻",
+          Expanded(
+            child: new Card(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              color: Colors.white,
+              child: new Stack(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(28.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          "DEVOTIONAL",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          widget.moment.content.author,
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.black26),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: Text(
+                            "⎻⎻⎻⎻⎻⎻⎻⎻ " + widget.moment.content.subtitle + "  ⎻⎻⎻⎻⎻⎻⎻⎻",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                      Text(
-                        widget.moment.content.text,
-                        style: TextStyle(
-                          fontSize: 16.0,
+                        Text(
+                          widget.moment.content.text,
+                          style: TextStyle(
+                            fontSize: 16.0,
 
-                          color: Colors.black,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ]),
+              ]),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),

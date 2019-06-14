@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/model/votd_story.dart';
+import 'package:flutter_app/model/yv_story.dart';
 import 'package:flutter_app/moment/moment_widget.dart';
 import 'package:flutter_app/ui/page_indicator.dart';
-import 'package:flutter_app/ui/utils.dart';
 
 import 'constants.dart';
 import 'network/services.dart';
 
 class StoryRunner extends StatelessWidget {
-  final String url;
+  final String storyId;
   var momentKeywords = {
     Constants.MOMENT_KEY_INTRO,
     Constants.MOMENT_KEY_PRAYER,
@@ -20,22 +19,25 @@ class StoryRunner extends StatelessWidget {
 
   final PageController controller = new PageController();
 
-  StoryRunner({Key key, @required this.url}) : super(key: key);
+  StoryRunner({Key key, @required this.storyId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: FutureBuilder<VotdStory>(
-              future: getVotdStory(url),
+          child: FutureBuilder<YvStory>(
+              future: getYvStory(Constants.getStoryUrl(storyId)),
               builder: (context, snapshot) {
-                Constants.VOTD_STORY = snapshot.data;
+                Constants.PLAN = storyId;
+                Constants.YV_STORY = snapshot.data;
 
                 if (usePager) {
                   print("using pager $usePager");
                   if (!snapshot.hasData) {
                     return new Text("Fetching data...");
                   }
+
+                  print("got data " + snapshot.data.toString());
 
                   return Scaffold(
                     body: new Stack(
@@ -57,7 +59,8 @@ class StoryRunner extends StatelessWidget {
                       ],
                     ),
                   );
-                } else if (snapshot.hasData) {  // Old approach, uses route queue like Activities
+                } else if (snapshot.hasData) {
+                  // Old approach, uses route queue like Activities
                   return Dismissible(
                     resizeDuration: null,
                     onDismissed: (DismissDirection direction) {
@@ -84,7 +87,7 @@ class StoryRunner extends StatelessWidget {
     print("next moment idx " + _momentIdx.toString());
     if (_momentIdx >= momentKeywords.length) return;
 
-    Moment moment = Constants.VOTD_STORY.moments.elementAt(_momentIdx);
+    Moment moment = Constants.YV_STORY.moments.elementAt(_momentIdx);
     Navigator.of(context).push(
       MaterialPageRoute<void>(builder: (BuildContext context) {
         return GestureDetector(
@@ -105,8 +108,12 @@ class StoryRunner extends StatelessWidget {
   /// Each page is a widget in a pager
   List<Widget> _createPages(List<Moment> moments) {
     List<Widget> momentWidgets = new List<MomentWidget>();
-    for (Moment moment in moments) {
-      momentWidgets.add(new MomentWidget(moment: moment, pageController: controller));
+    for (int i = 0; i < moments.length; i++) {
+      print("adding element " + i.toString());
+      momentWidgets.add(new MomentWidget(
+          moment: moments.elementAt(i),
+          pageIdx: i,
+          pageController: controller));
     }
 
     return momentWidgets;
