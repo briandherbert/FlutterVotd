@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PageIndicator extends StatefulWidget {
   final PageController controller;
   final int count;
-  static final double HEIGHT = 3;
+  static final double _height = 3;
 
   PageIndicator({Key key, @required this.controller, @required this.count})
       : super();
@@ -57,10 +57,10 @@ class PageIndicatorState extends State<PageIndicator> {
       indicators.add(new Expanded(
         child: Padding(
           padding: EdgeInsets.fromLTRB(
-              PageIndicator.HEIGHT, 0, PageIndicator.HEIGHT, 0),
+              PageIndicator._height, 0, PageIndicator._height, 0),
           child: Container(
             color: _getPageSelectorColor(i <= _page),
-            height: PageIndicator.HEIGHT,
+            height: PageIndicator._height,
           ),
         ),
       ));

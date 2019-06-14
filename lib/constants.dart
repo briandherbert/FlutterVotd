@@ -28,7 +28,6 @@ class Constants {
     return BASE_URL + PLAN + "story_info.json";
   }
 
-//  static VotdStory VOTD_STORY;
   static YvStory YV_STORY;
 
   static String getStoryUrl(String id) {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'moment_widget.dart';
-import 'package:flutter_app/ui/video_player.dart';
-import 'package:flutter_app/constants.dart';
 
 class TodoMomentState extends MomentState {
   final formController = TextEditingController();

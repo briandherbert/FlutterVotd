@@ -5,7 +5,7 @@ import 'dart:async';
 /// Based on https://flutter.dev/docs/cookbook/plugins/play-video
 class VideoPlayerScreen extends StatefulWidget {
   final String url;
-  VideoPlayerScreen({Key key, @required String this.url}) : super(key: key);
+  VideoPlayerScreen({Key key, @required this.url}) : super(key: key);
 
   @override
   _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
@@ -14,7 +14,6 @@ class VideoPlayerScreen extends StatefulWidget {
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
-  bool _isLoaded = false;
 
   @override
   void initState() {

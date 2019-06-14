@@ -1,12 +1,8 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/constants.dart';
-//import 'package:flutter_app/model/votd_story.dart';
 import 'package:flutter_app/model/yv_story.dart';
 import 'package:flutter_app/moment/devo_moment_state.dart';
 import 'package:flutter_app/moment/image_moment_state.dart';
-import 'package:flutter_app/moment/intro_moment_state.dart';
 import 'package:flutter_app/moment/intro_moment_state2.dart';
 import 'package:flutter_app/moment/prayer_moment_state.dart';
 import 'package:flutter_app/moment/reflect_moment_state.dart';
@@ -78,28 +74,44 @@ class MomentWidget extends StatefulWidget {
 /// Base UI for moments. Override build(context) to go custom
 abstract class MomentState extends State<MomentWidget> {
   bool isSettled = false;
+  Content data; // convenience for subclass access
+  bool showTextInputModal = false;
 
   @override
   Widget build(BuildContext context) {
+
+    List<Widget> children = [
+      getBg(),
+      Padding(
+          padding: EdgeInsets.only(top: getTopPadding()),
+          child: getContent()),
+      Padding(
+          padding: EdgeInsets.only(left: 10, right: 10, top: 48.0),
+          child:
+          Container(height: 40,
+              child: getHeader())),
+    ];
+
+    if (showTextInputModal) {
+      children.add(Container(color: Colors.red,));
+    }
+
     return new Scaffold(
         body: new Stack(
-      children: <Widget>[
-        getBg(),
-        Padding(
-            padding: EdgeInsets.only(top: getTopPadding()),
-            child: getContent()),
-        Padding(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 48.0),
-            child:
-                Container(height: 40,
-                    child: getHeader())),
-      ],
+      children: children
     ));
+  }
+
+  void toggleTextInputModal(bool visible) {
+    setState(() {
+      showTextInputModal = visible;
+    });
   }
 
   @override
   void initState() {
     widget.pageController.addListener(_onPagerUpdate);
+    data = widget.moment.content;
     super.initState();
   }
 
@@ -115,7 +127,6 @@ abstract class MomentState extends State<MomentWidget> {
     if (d % 1 >= .99999999) d = d.ceil().toDouble();  //ViewPager bug
     bool newIsSettled = d % 1 == 0;
 
-    print(getName() + " is settled " + isSettled.toString() + " $d");
     if (isSettled != newIsSettled && (!newIsSettled || d.floor() == widget.pageIdx)) {
       setState(() {
         isSettled = newIsSettled;
@@ -150,24 +161,6 @@ abstract class MomentState extends State<MomentWidget> {
         color: isSettled ? Colors.white : Colors.transparent,
       ),
     ]);
-  }
-
-  Widget _getAppBar() {
-    if (Platform.isAndroid || true) {
-      return new AppBar(
-        title: Text(
-          getName(),
-          style: TextStyle(color: Constants.bgColorLight()),
-        ),
-        elevation: 0,
-        backgroundColor: Constants.bgColorDark(),
-        iconTheme: IconThemeData(color: Constants.bgColorLight()),
-      );
-    }
-
-    return AppBar(
-      title: Text(getName()),
-    );
   }
 
   Widget getContent();

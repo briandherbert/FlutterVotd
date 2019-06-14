@@ -14,8 +14,7 @@ Future<YvStory> getYvStory(String url) async {
   String jsonStr;
   try {
     if (fromFile) {
-      jsonStr = await rootBundle.loadString("assets/json/votd.json");
-      print("jsonstr " + jsonStr);
+      jsonStr = await rootBundle.loadString("assets/json/personalized.json");
     } else {
       jsonStr = (await http.get(url)).body;
     }
@@ -30,6 +29,7 @@ Future<YvStory> getYvStory(String url) async {
     story = YvStory.fromJson(decoded);
   } catch (e) {
     print("error converting from json " + e.toString());
+    throw e;
   }
 
   return story;

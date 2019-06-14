@@ -20,7 +20,6 @@ class StoriesList extends StatelessWidget {
                 } else {
 
                   List<String> ids = snapshot.data.storyIds;
-                  for (String name in ids) {}
 
                   //return Text("got story data ");
 

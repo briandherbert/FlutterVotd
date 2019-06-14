@@ -8,14 +8,15 @@ import 'network/services.dart';
 
 class StoryRunner extends StatelessWidget {
   final String storyId;
-  var momentKeywords = {
+  final List<String> momentKeywords = [
     Constants.MOMENT_KEY_INTRO,
     Constants.MOMENT_KEY_PRAYER,
     Constants.MOMENT_KEY_VERSE
-  };
+  ];
+
+  final bool usePager = true;
   int _momentIdx = 0;
 
-  bool usePager = true;
 
   final PageController controller = new PageController();
 
@@ -30,6 +31,12 @@ class StoryRunner extends StatelessWidget {
               builder: (context, snapshot) {
                 Constants.PLAN = storyId;
                 Constants.YV_STORY = snapshot.data;
+
+                print("future builder connection state " + snapshot.connectionState.toString() + " has error " + snapshot.hasError.toString());
+
+                if (snapshot.hasError) {
+                  throw snapshot.error;
+                }
 
                 if (usePager) {
                   print("using pager $usePager");
@@ -109,7 +116,6 @@ class StoryRunner extends StatelessWidget {
   List<Widget> _createPages(List<Moment> moments) {
     List<Widget> momentWidgets = new List<MomentWidget>();
     for (int i = 0; i < moments.length; i++) {
-      print("adding element " + i.toString());
       momentWidgets.add(new MomentWidget(
           moment: moments.elementAt(i),
           pageIdx: i,

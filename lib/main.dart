@@ -1,8 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'story_runner.dart';
 import 'stories_list.dart';
-import 'package:flutter_app/constants.dart';
 
 void main() => runApp(MyApp());
 
