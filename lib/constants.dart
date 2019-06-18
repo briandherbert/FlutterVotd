@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class Constants {
   static const String BASE_URL = "https://s3.amazonaws.com/yv-stories/";
-  //static const String JSON_URL = BASE_URL + "story_info.json";
   static const String STORIES_URL = BASE_URL + "stories_info.json";
 
-  static String PLAN = PLAN_VOTD;
+  static String _currentStoryId = "votd2";
+  static YvStory _currentStory;
 
   static const String MOMENT_KEY_VERSE = "bible";
   static const String MOMENT_KEY_PRAYER = "prayer";
@@ -19,32 +19,45 @@ class Constants {
   static const String MOMENT_KEY_VIDEO = "video";
   static const String MOMENT_KEY_MEMORY = "memory";
 
-  static const String PLAN_VOTD = "votd2";
-  static const String PLAN_PERSONAL = "personalized";
-  static const String PLAN_HEALING = "healing";
-
-
   static getJsonUrl() {
-    return BASE_URL + PLAN + "story_info.json";
+    return BASE_URL + _currentStoryId + "story_info.json";
   }
-
-  static YvStory YV_STORY;
-
-  static String getStoryUrl(String id) {
+  
+  static String  getStoryUrl(String id) {
     print("getting story url for " + id);
     return BASE_URL + id + "/story_info.json";
   }
 
   static String getImageUrl(String filename) {
     if (filename == null) return "";
-    return BASE_URL + PLAN + "/" + filename;
+    return BASE_URL + _currentStoryId + "/" + filename;
   }
 
-  static Color bgColorLight() {
-    return Utils.colorFrom(YV_STORY.theme.backgroundColor2);
+  static Color accentColor() {
+    return Utils.colorFrom(_currentStory.theme.accentColor);
   }
 
-  static Color bgColorDark() {
-    return Utils.colorFrom(YV_STORY.theme.backgroundColor);
+  static Color bgColor() {
+    return Utils.colorFrom(_currentStory.theme.backgroundColor);
+  }
+  
+  static Color primaryColor() {
+    return Utils.colorFrom(_currentStory.theme.primaryColor);
+  }
+
+  static Color uiColor() {
+    return Utils.colorFrom(_currentStory.theme.uiColor);
+  }
+
+  static Widget getBg() {
+    return Utils.getGradient(
+        Constants._currentStory.theme.backgroundColor, Constants._currentStory.theme.backgroundColor2);
+  }
+
+  static const List<String> LOCAL_STORY_FILES = ["new", "prayer"];
+  
+  static setStoryData(String planId, YvStory story) {
+    _currentStoryId = planId;
+    _currentStory = story;
   }
 }

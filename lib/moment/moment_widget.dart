@@ -3,7 +3,7 @@ import 'package:flutter_app/constants.dart';
 import 'package:flutter_app/model/yv_story.dart';
 import 'package:flutter_app/moment/devo_moment_state.dart';
 import 'package:flutter_app/moment/image_moment_state.dart';
-import 'package:flutter_app/moment/intro_moment_state2.dart';
+import 'package:flutter_app/moment/intro_moment_state.dart';
 import 'package:flutter_app/moment/prayer_moment_state.dart';
 import 'package:flutter_app/moment/reflect_moment_state.dart';
 import 'package:flutter_app/moment/verse_moment_state.dart';
@@ -16,7 +16,7 @@ export 'package:flutter_app/constants.dart';
 class MomentWidget extends StatefulWidget {
   final Moment moment;
   final int pageIdx;
-  PageController pageController;
+  final PageController pageController;
 
   MomentWidget(
       {Key key,
@@ -43,7 +43,7 @@ class MomentWidget extends StatefulWidget {
 
       case Constants.MOMENT_KEY_INTRO:
         {
-          return IntroMomentState2();
+          return IntroMomentState();
         }
 
       case Constants.MOMENT_KEY_IMAGE:
@@ -81,7 +81,7 @@ abstract class MomentState extends State<MomentWidget> {
   Widget build(BuildContext context) {
 
     List<Widget> children = [
-      getBg(),
+      Constants.getBg(),
       Padding(
           padding: EdgeInsets.only(top: getTopPadding()),
           child: getContent()),
@@ -134,11 +134,6 @@ abstract class MomentState extends State<MomentWidget> {
     }
   }
 
-  Widget getBg() {
-    return Utils.getGradient(
-        Constants.YV_STORY.theme.backgroundColor, Constants.YV_STORY.theme.backgroundColor2);
-  }
-
   double getTopPadding() {
     return 80.0;
   }
@@ -153,7 +148,7 @@ abstract class MomentState extends State<MomentWidget> {
         child: Text(
           getName().toUpperCase(),
           textAlign: TextAlign.center,
-          style: TextStyle(color: Constants.bgColorLight()),
+          style: TextStyle(color: Constants.accentColor()),
         ),
       ),
       Icon(

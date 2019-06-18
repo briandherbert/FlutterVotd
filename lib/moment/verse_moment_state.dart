@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_app/model/votd_story.dart';
 import 'package:flutter_app/model/yv_story.dart';
 
 import 'moment_widget.dart';
@@ -15,53 +14,27 @@ class VerseMomentState extends MomentState {
   @override
   Widget getContent() {
     Reference bibleRef = widget.moment.content.references[0];
-    String text = bibleRef.text + "\n\n" + bibleRef.ref;
 
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: Center(
-              child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Card(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    text,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
-                ),
-              ),
-            ),
-          )),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 0, 8, 20),
-          child: Row(
-            children: <Widget>[
-              Checkbox(
-                value: isCheckedMeditate,
-                onChanged: (bool value) {
-                  setState(() {
-                    isCheckedMeditate = !isCheckedMeditate;
-                  });
-                },
-              ),
-              Flexible(
-                child: Text("I want to meditate on this scripture later today",
-                style: TextStyle(fontSize: 20),),
-              ),
-            ],
-          ),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Center(
+              child: Text(
+                bibleRef.text,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Constants.primaryColor(), fontSize: 22),
+              )),
+          SizedBox(height: 20,),
+          Text(
+            bibleRef.ref,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Constants.uiColor(), fontWeight: FontWeight.bold, fontSize: 16),
+          )
+        ],
+      ),
     );
   }
 }

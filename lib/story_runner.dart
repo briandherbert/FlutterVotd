@@ -8,42 +8,42 @@ import 'network/services.dart';
 
 class StoryRunner extends StatelessWidget {
   final String storyId;
+  final bool fromFile;
   final List<String> momentKeywords = [
     Constants.MOMENT_KEY_INTRO,
     Constants.MOMENT_KEY_PRAYER,
     Constants.MOMENT_KEY_VERSE
   ];
 
-  final bool usePager = true;
-  int _momentIdx = 0;
-
-
   final PageController controller = new PageController();
 
-  StoryRunner({Key key, @required this.storyId}) : super(key: key);
+  StoryRunner({Key key, @required this.storyId, @required this.fromFile})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print("build story runner, from file " +
+        this.fromFile.toString() +
+        " with id " +
+        storyId);
+
     return Scaffold(
       body: Center(
           child: FutureBuilder<YvStory>(
-              future: getYvStory(Constants.getStoryUrl(storyId)),
+              future: getYvStory(storyId, fromFile),
               builder: (context, snapshot) {
-                Constants.PLAN = storyId;
-                Constants.YV_STORY = snapshot.data;
+                Constants.setStoryData(storyId, snapshot.data);
 
-                print("future builder connection state " + snapshot.connectionState.toString() + " has error " + snapshot.hasError.toString());
+                print("future builder connection state " +
+                    snapshot.connectionState.toString() +
+                    " has error " +
+                    snapshot.hasError.toString());
 
                 if (snapshot.hasError) {
                   throw snapshot.error;
                 }
 
-                if (usePager) {
-                  print("using pager $usePager");
-                  if (!snapshot.hasData) {
-                    return new Text("Fetching data...");
-                  }
-
+                if (snapshot.hasData) {
                   print("got data " + snapshot.data.toString());
 
                   return Scaffold(
@@ -66,50 +66,11 @@ class StoryRunner extends StatelessWidget {
                       ],
                     ),
                   );
-                } else if (snapshot.hasData) {
-                  // Old approach, uses route queue like Activities
-                  return Dismissible(
-                    resizeDuration: null,
-                    onDismissed: (DismissDirection direction) {
-                      if (direction == DismissDirection.endToStart) {
-                        _nextMoment(context);
-                      } else {
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    key: new ValueKey(_momentIdx),
-                    child: new Center(
-                      child: new Text("Loaded, swipe to proceed"),
-                    ),
-                  );
                 } else {
                   return Text("loading data...");
                 }
               })),
     );
-  }
-
-  /// Each page is its own Route/Activity
-  void _nextMoment(BuildContext context) {
-    print("next moment idx " + _momentIdx.toString());
-    if (_momentIdx >= momentKeywords.length) return;
-
-    Moment moment = Constants.YV_STORY.moments.elementAt(_momentIdx);
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (BuildContext context) {
-        return GestureDetector(
-          child: WillPopScope(
-              child: MomentWidget(moment: moment),
-              onWillPop: () async {
-                _momentIdx--;
-                return true;
-              }),
-          onTap: () => _nextMoment(context),
-        );
-      }),
-    );
-
-    _momentIdx++;
   }
 
   /// Each page is a widget in a pager

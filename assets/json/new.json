@@ -1,0 +1,77 @@
+{
+  "title": "New User",
+  "theme": {
+    "accentColor": "dddddd",
+    "backgroundColor": "000000",
+    "backgroundColor2": "333333",
+    "uiColor": "ffffff",
+    "primaryColorOLD": "495949",
+    "primaryColor": "ffffff"
+  },
+  "moments": [
+    {
+      "id": 0,
+      "type": "intro",
+      "title": "VERSE OF THE DAY",
+      "content": {
+        "title": "Welcome to YouVersion",
+        "text": "Let us show you how much God loves you."
+      }
+    },
+    {
+      "id": 1,
+      "type": "bible",
+      "title": "MEDITATION",
+      "content": {
+        "references": [
+          {
+            "text": "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",
+            "ref": "John 3:16"
+          },
+          {
+            "text": "And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.",
+            "ref": "Philippians 4:7 (ESV)"
+          },
+          {
+            "text": "And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+            "ref": "Philippians 4:7 (NIV)"
+          },
+          {
+            "text": "then God's wonderful peace that transcends human understanding, will make the answers known to you through Jesus Christ.",
+            "ref": "Philippians 4:7 (TPT)"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "type": "reflection",
+      "title": "REFLECTION",
+      "content": {
+        "prompt": "Do you know God's love for you?",
+        "subject": "Worries that I am lifting up in prayer",
+        "quickOptions": [
+          "I don't but I want to",
+          "I feel like God can't love me",
+          "Yes! I follow Jesus!"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "type": "prayer",
+      "title": "PRAYER",
+      "content": {
+        "prompt": "Take a moment to pray over this verse."
+      }
+    }
+  ],
+  "resources": [
+    {
+      "image": "assets/votd_image.png"
+    },
+    {
+      "image": "assets/devo_hero.jpg"
+    }
+  ]
+}

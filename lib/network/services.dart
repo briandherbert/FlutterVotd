@@ -1,20 +1,21 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_app/constants.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_app/model/stories_info.dart';
 import 'package:flutter_app/model/yv_story.dart';
 import 'package:http/http.dart' as http;
 
-Future<YvStory> getYvStory(String url) async {
-  bool fromFile = false;
+Future<YvStory> getYvStory(String storyId, bool fromFile) async {
+  String url = Constants.getStoryUrl(storyId);
   print("get story, from file? " + fromFile.toString() + " url " + url);
 
   var decoded;
   String jsonStr;
   try {
     if (fromFile) {
-      jsonStr = await rootBundle.loadString("assets/json/personalized.json");
+      jsonStr = await rootBundle.loadString("assets/json/$storyId.json");
     } else {
       jsonStr = (await http.get(url)).body;
     }

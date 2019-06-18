@@ -49,6 +49,8 @@ flutter:
   - assets/json/votd2.json
   - assets/json/personalized.json
   - assets/json/healing.json
+  - assets/json/new.json
+  - assets/json/prayer.json
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
